@@ -93,7 +93,7 @@ function multigreeting(name, language) {
   } else if (language === "eo") {
       return ("Saluton, " + name + "!")
   }
- }
+ } 
 
 
 // 10. Create a function, howOld, that takes a birthdate and a another
@@ -101,12 +101,25 @@ function multigreeting(name, language) {
 // with that birthdate was on that date. The dates should be JavaScript
 // Date objects.
 // If the birth date is after than the current date, return nothing.
-function howOld(birthDate,currentDate) {
-    var oneDay= 86400000;
-    var birthDate_ms = birthDate.getTime();
-    var currentDate_ms = currentDate.getTime();
-    var difference_ms = birthDate_ms - currentDate_ms;
-    return Math.round(difference_ms/oneDay); 
-    
-}
 
+// function howOld(birthDate,currentDate) {
+//     var oneYear = 1000*60*60*24*365
+//     var birthDate_ms = birthDate.getTime();
+//     var currentDate_ms = currentDate.getTime();
+//     var difference_ms = currentDate_ms - birthDate_ms;
+//     return Math.round(difference_ms/oneYear); 
+    
+// }
+
+
+function howOld (birthDate, currentDate) {
+    if (birthDate > currentDate) { return }
+  
+    var age = currentDate.getFullYear() - birthDate.getFullYear()
+    if (currentDate.getMonth() < birthDate.getMonth() ||
+        (currentDate.getMonth() === birthDate.getMonth() &&
+         currentDate.getDay() < birthDate.getDay())) {
+      age -= 1
+    }
+    return age
+  }
